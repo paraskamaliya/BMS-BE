@@ -35,4 +35,16 @@ itemRouter.patch("/:id/update", async (req, res) => {
     }
 })
 
+
+itemRouter.delete("/:id/delete", async (req, res) => {
+    const { id } = req.params;
+    try {
+        await ItemModel.findByIdAndDelete({ _id: id });
+        let item = await ItemModel.find();
+        res.status(200).send(item);
+    } catch (error) {
+        res.status(400).send({ "message": "Something went wrong", "err": error })
+    }
+})
+
 module.exports = { itemRouter };
