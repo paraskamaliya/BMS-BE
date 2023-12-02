@@ -11,7 +11,7 @@ app.use(express.json());
 app.use("/items", itemRouter);
 app.use("/users", userRouter);
 
-app.get("./", (req, res) => {
+app.get("/", (req, res) => {
     res.end('Welcome To Home Page')
 })
 
